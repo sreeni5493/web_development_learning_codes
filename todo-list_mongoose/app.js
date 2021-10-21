@@ -65,6 +65,10 @@ app.get("/", function(req, res) {
 
 app.get("/:customListName", function(req, res){
   const customListName = _.capitalize(req.params.customListName);
+  if(customListName === "About"){
+	  res.render("about");
+  }
+  else{
 
   List.findOne({name: customListName}, function(err, foundList){
     if (!err){
@@ -84,7 +88,7 @@ app.get("/:customListName", function(req, res){
     }
   });
 
-
+  }
 
 });
 
